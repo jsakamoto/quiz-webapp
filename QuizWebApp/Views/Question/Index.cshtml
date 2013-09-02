@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PlayCode2013Quiz.Models.PublicQuestion>
+@using PlayCode2013Quiz.Helpers
+@{
+    ViewBag.Title = "クイズ問題";
+}
+<hgroup>
+    <h2>@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+</hgroup>
+
+<div>
+    @foreach (var question in Model)
+    {
+        <div class="well">
+            <h3>Q @question.QuestionNumber</h3>
+            <div>@Html.FormatToHtml(question.Question.Body, question.Question.BodyFormat)</div>
+            <div>
+                <a href="@Url.Action("Detail", new { id = question.Question.QuestionId })" class="btn"><i class="icon-circle-arrow-right"></i> 詳細</a>
+            </div>
+        </div>
+    }
+</div>

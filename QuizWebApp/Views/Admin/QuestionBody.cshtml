@@ -1,0 +1,7 @@
+﻿@model PlayCode2013Quiz.Models.Question
+@using PlayCode2013Quiz.Models
+@using PlayCode2013Quiz.Helpers
+
+@if (Model != null) {
+    <text>@Html.FormatToHtml(Model.Body, Model.BodyFormat)</text>
+}

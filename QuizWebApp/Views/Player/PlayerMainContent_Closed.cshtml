@@ -1,0 +1,38 @@
+﻿@model PlayCode2013Quiz.Models.PlayCode2013QuizDB
+@using PlayCode2013Quiz.Models
+@using PlayCode2013Quiz.Helpers
+
+@{
+    var q = Model.Questions.Find(Model.Contexts.First().CurrentQuestionID);
+    var playerID = Model.Players.First(p => p.Name == User.Identity.Name).PlayerID;
+    var yourAns = Model.Answers.First(a => a.PlayerID == playerID && a.QuestionID == q.QuestionId);
+    var choosed = yourAns.ChoosedOptionIndex >= 0 ? q.GetOptions()[yourAns.ChoosedOptionIndex - 1] : null;
+}
+
+<div class="well well-small">
+    <h3>Question is...</h3>
+    <div>
+        @Html.FormatToHtml(q.Body, q.BodyFormat)
+    </div>
+</div>
+
+<div class="well well-small">
+    <h3>Your Choice is...</h3>
+
+    <div class="optios">
+        @if (choosed == null)
+        {
+            <p>no choice.</p>
+        }
+        else
+        {
+            <div>@(choosed.Option)</div>
+            if (string.IsNullOrEmpty(choosed.OptionImage) == false)
+            {
+                <img src="@choosed.OptionImage" />
+            }
+        }
+    </div>
+</div>
+
+<p class="label label-wait"><i class="icon-info-sign icon-white"></i> Please wait...</p>

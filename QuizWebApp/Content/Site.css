@@ -1,0 +1,188 @@
+﻿body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+}
+
+.user-name {
+    color: #999999;
+    padding: 10px 15px 10px 15px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* styles for removing the background from form */
+.no-color {
+    background-color: white;
+    border-style: none;
+}
+
+/* -----------------------------------------------------------*/
+.well-small h3:first-child {
+    margin-top: -5px;
+}
+
+.label-wait {
+    display: block;
+    padding: 10px;
+    font-size: 90%;
+}
+
+
+.options label {
+    cursor: pointer;
+}
+
+    .options label img {
+        display: block;
+    }
+
+.answer-status {
+    display: block;
+    width: 2em;
+    height: 2em;
+    zoom: 1;
+    background-color: #ddd;
+}
+
+/* entried, and wainting. */
+.answer-status-Pending {
+    background-color: #ffd800;
+}
+
+/* correct. */
+.answer-status-Correct {
+    background-color: #20ca20;
+}
+
+/* incorect. */
+.answer-status-Incorrect {
+    background-color: #ff6a00;
+}
+
+/* Player
+-----------------------------------------------------------*/
+pre {
+    font-family: Consolas, monospace;
+    border: solid 1px;
+    border-color: #0094ff;
+    padding: 1em;
+    background-color: #f2f8fc;
+}
+
+.correct,
+.incorrect {
+    color: white;
+    width: 10em;
+    padding: 0.3em;
+}
+
+.correct {
+    background-color: #20ca20;
+}
+
+.incorrect {
+    background-color: #ff6a00;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    background-color: #ddd;
+    height: 3em;
+    line-height: 3em;
+    bottom: 0;
+    left: 0;
+}
+
+    .footer a {
+        display: block;
+        margin-left: 1em;
+    }
+
+
+.dashboard-page .nav .link-dashboard {
+    display: none;
+}
+.dashboard {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    .dashboard .score {
+        text-align: right;
+        width: 60px;
+        padding-right: 8px;
+    }
+
+/*  */
+.about-option-image,
+.disability-option-image-setup {
+    display: none;
+}
+.fileapi .about-option-image,
+.no-fileapi .disability-option-image-setup {
+    display: inline-block;
+}
+
+.image-holder {
+    padding-top: 4px;
+}
+
+img.no-image,
+.no-image img,
+.no-image .btn.remove-image {
+    display: none;
+}
+
+.btn-add-image {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.no-fileapi .btn-add-image {
+    display: none;
+}
+
+.option-image-file {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.001;
+    font-size: 300px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.remove-image {
+    vertical-align: top;
+}
+
+.image-actions {
+    margin-top: 4px;
+}

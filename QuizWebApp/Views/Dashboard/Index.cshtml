@@ -1,0 +1,17 @@
+﻿@using PlayCode2013Quiz.Models
+@model PlayCode2013Quiz.Models.PlayCode2013QuizDB
+
+@{
+    ViewBag.Title = "Dashboard";
+    ViewBag.BodyCssClass = "dashboard-page";
+}
+@section scripts{
+    <script type="text/javascript" src="~/Views/Dashboard/Dashboard.js"></script>    
+}
+
+
+<h2>Dashboard</h2>
+
+<div class="main-content">
+    @Html.Partial("DashboardMainContent", Model)
+</div>

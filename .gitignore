@@ -1,0 +1,7 @@
+
+/packages
+bin
+obj
+*.suo
+/custom.appSettings.config
+*.user

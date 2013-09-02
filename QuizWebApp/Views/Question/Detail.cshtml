@@ -1,0 +1,15 @@
+﻿@model PlayCode2013Quiz.Models.PublicQuestion
+@{
+    ViewBag.Title = "クイズ問題 - Q" + Model.QuestionNumber.ToString();
+}
+<hgroup>
+    <h2>@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+</hgroup>
+
+<div class="well">
+    <div>@Html.Partial("_DisplayFormPartial", Model.Question)</div>
+    <div>
+        <a href="javascript:history.back()" class="btn"><i class="icon-circle-arrow-left"></i> 戻る</a>
+    </div>
+</div>

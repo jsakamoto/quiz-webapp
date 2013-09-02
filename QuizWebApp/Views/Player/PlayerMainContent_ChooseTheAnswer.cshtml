@@ -1,0 +1,32 @@
+﻿@model PlayCode2013Quiz.Models.PlayCode2013QuizDB
+
+@using PlayCode2013Quiz.Models
+@using PlayCode2013Quiz.Helpers
+
+@{
+    var q = Model.Questions.Find(Model.Contexts.First().CurrentQuestionID);
+}
+<div class="well well-small">
+    <h3>Question is...</h3>
+    <div>
+        @Html.FormatToHtml(q.Body, q.BodyFormat)
+    </div>
+</div>
+
+<div class="well well-small">
+    <h3>Chose Answer.</h3>
+
+    @foreach (var opt in q.GetOptions())
+    {
+        <div class="options">
+            <input type="radio" name="option" value="@opt.OptionNumber" id="@("option" + opt.OptionNumber.ToString())" />
+            <label for="@("option" + opt.OptionNumber.ToString())">
+                @opt.Option
+                @if (string.IsNullOrEmpty(opt.OptionImage) == false)
+                {
+                    <img src="@opt.OptionImage" />
+                }
+            </label>
+        </div>
+    }
+</div>

@@ -1,0 +1,17 @@
+﻿@model PlayCode2013Quiz.Models.PlayCode2013QuizDB
+@using PlayCode2013Quiz.Models
+
+@{
+    ViewBag.Title = "Play";
+}
+@section scripts{
+    <script type="text/javascript" src="~/Views/Player/Player.js"></script>
+}
+
+<form>
+    <input type="hidden" name="currentstate" id="currentstate" value="@Model.Contexts.First().CurrentState" />
+</form>
+
+<div class="main-content">
+    @Html.Action("PlayerMainContent")
+</div>

@@ -5,7 +5,7 @@ using QuizWebApp.Models;
 
 namespace QuizWebApp.Controllers
 {
-    public class QuestionsController : ApiController
+    public class PublicQuestionsController : ApiController
     {
         private PlayCode2013QuizDB db = new PlayCode2013QuizDB();
 

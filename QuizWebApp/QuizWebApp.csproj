@@ -191,14 +191,14 @@
     <Compile Include="Code\IIdentityExtension.cs" />
     <Compile Include="Code\LamdaResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\PublicQuestionController.cs" />
     <Compile Include="Hubs\ContextHub.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
-    <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\PublicQuestionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -342,9 +342,9 @@
     <Content Include="Views\Admin\QuestionBody.cshtml" />
     <Content Include="Views\Dashboard\DashboardMainContent.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Question\Index.cshtml" />
-    <Content Include="Views\Question\_DisplayFormPartial.cshtml" />
-    <Content Include="Views\Question\Detail.cshtml" />
+    <Content Include="Views\PublicQuestion\Index.cshtml" />
+    <Content Include="Views\PublicQuestion\_DisplayFormPartial.cshtml" />
+    <Content Include="Views\PublicQuestion\Detail.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>

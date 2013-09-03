@@ -5,11 +5,11 @@ using QuizWebApp.Models;
 
 namespace QuizWebApp.Controllers
 {
-    public class QuestionController : Controller
+    public class PublicQuestionController : Controller
     {
         public PlayCode2013QuizDB DB { get; set; }
 
-        public QuestionController()
+        public PublicQuestionController()
         {
             this.DB = new PlayCode2013QuizDB();
         }

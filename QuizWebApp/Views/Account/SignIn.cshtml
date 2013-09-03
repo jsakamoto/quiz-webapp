@@ -1,0 +1,42 @@
+﻿@model ICollection<Microsoft.Web.WebPages.OAuth.AuthenticationClientData>
+
+@{
+    ViewBag.Title = "サインイン";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginForm("ExternalLogin", "Account"))
+{
+    @Html.AntiForgeryToken()
+    foreach (AuthenticationClientData p in Model)
+    {
+
+        string imageName;
+        switch (p.DisplayName)
+        {
+            case "Facebook":
+                imageName = @"/Content/images/facebook.png";
+                break;
+            case "Twitter":
+                imageName = @"/Content/images/twitter.png";
+                break;
+            case "Microsoft":
+                imageName = @"/Content/images/microsoft.png";
+                break;
+            case "Google":
+                imageName = @"/Content/images/google_plus.png";
+                break;
+            case "GitHub":
+                imageName = @"/Content/images/github.png";
+                break;
+            default:
+                imageName = "";
+                break;
+        }
+        <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">
+            <img src="@imageName" />
+            @p.DisplayName
+        </button>
+    }
+}

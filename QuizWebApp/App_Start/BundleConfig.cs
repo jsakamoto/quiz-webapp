@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace PlayCode2013Quiz
+namespace QuizWebApp
 {
     public class BundleConfig
     {

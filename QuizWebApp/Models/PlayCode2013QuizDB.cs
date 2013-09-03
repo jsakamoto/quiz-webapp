@@ -4,11 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace PlayCode2013Quiz.Models
+namespace QuizWebApp.Models
 {
     public class PlayCode2013QuizDB : DbContext
     {
-        public DbSet<Player> Players { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Question> Questions { get; set; }
 

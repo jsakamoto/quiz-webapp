@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PlayCode2013Quiz.Models
+namespace QuizWebApp.Models
 {
     public class Question
     {

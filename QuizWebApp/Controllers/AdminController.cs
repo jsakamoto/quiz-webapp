@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using PlayCode2013Quiz.Models;
+using QuizWebApp.Models;
 
-namespace PlayCode2013Quiz.Controllers
+namespace QuizWebApp.Controllers
 {
     public class AdminController : Controller
     {

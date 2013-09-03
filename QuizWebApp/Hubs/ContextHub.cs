@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
-using PlayCode2013Quiz.Models;
+using QuizWebApp.Models;
 
-namespace PlayCode2013Quiz.Hubs
+namespace QuizWebApp.Hubs
 {
     [HubName("Context")]
     public class ContextHub : Hub
@@ -43,7 +43,7 @@ namespace PlayCode2013Quiz.Hubs
         {
             using (var db = new PlayCode2013QuizDB())
             {
-                var playerId = db.Players.First(p => p.Name == Context.User.Identity.Name).PlayerID;
+                var playerId = Context.User.Identity.UserId();
                 var questionId = db.Contexts.First().CurrentQuestionID;
                 var ansewer = db.Answers.First(a => a.PlayerID == playerId && a.QuestionID == questionId);
                 ansewer.ChoosedOptionIndex = answerIndex;

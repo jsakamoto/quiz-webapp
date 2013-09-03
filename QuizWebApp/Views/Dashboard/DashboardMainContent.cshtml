@@ -1,6 +1,5 @@
-﻿@model PlayCode2013Quiz.Models.PlayCode2013QuizDB
-@using PlayCode2013Quiz.Models
-
+﻿@model QuizWebApp.Models.PlayCode2013QuizDB
+@using QuizWebApp.Models
 
 <table class="dashboard">
     <tr>
@@ -12,16 +11,16 @@
         }
     </tr>
 
-    @foreach (var player in Model.Players.ToArray())
+    @foreach (var player in Model.Users.ToArray())
     {
         <tr>
             <td>@player.Name</td>
             <td class="score">
-                @Model.Answers.Count(a => a.PlayerID == player.PlayerID && a.Status == AnswerStateType.Correct)
+                @Model.Answers.Count(a => a.PlayerID == player.UserId && a.Status == AnswerStateType.Correct)
             </td>
             @foreach(var q in Model.Questions.ToList())
             {
-                var ans = Model.Answers.FirstOrDefault(a => a.PlayerID == player.PlayerID && a.QuestionID == q.QuestionId) ?? new Answer();
+                var ans = Model.Answers.FirstOrDefault(a => a.PlayerID == player.UserId && a.QuestionID == q.QuestionId) ?? new Answer();
                 <td><span class="answer-status answer-status-@ans.Status">&nbsp;</span></td>
             }
         </tr>

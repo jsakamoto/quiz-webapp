@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using PlayCode2013Quiz.Models;
+using QuizWebApp.Models;
 
-namespace PlayCode2013Quiz.Controllers
+namespace QuizWebApp.Controllers
 {
     [Authorize]
     public class PlayerController : Controller
@@ -25,7 +25,7 @@ namespace PlayCode2013Quiz.Controllers
         public ActionResult PlayerMainContent()
         {
             var context = this.DB.Contexts.First();
-            var playerID = this.DB.Players.First(p => p.Name == User.Identity.Name).PlayerID;
+            var playerID = this.User.Identity.UserId();
             var questionID = this.DB.Contexts.First().CurrentQuestionID;
             var ansewer = this.DB.Answers.FirstOrDefault(a => a.PlayerID == playerID && a.QuestionID == questionID);
             if (ansewer == null)

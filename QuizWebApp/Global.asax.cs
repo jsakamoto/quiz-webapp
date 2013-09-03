@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using PlayCode2013Quiz.Models;
+using QuizWebApp.Models;
 
-namespace PlayCode2013Quiz
+namespace QuizWebApp
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -20,6 +22,9 @@ namespace PlayCode2013Quiz
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AuthConfig.RegisterAuth();
+
+            Database.SetInitializer(new CreateDatabaseIfNotExists<PlayCode2013QuizDB>());
 
             using (var db = new PlayCode2013QuizDB())
             {

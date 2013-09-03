@@ -4,10 +4,10 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PlayCode2013Quiz.Models;
+using QuizWebApp.Models;
 using MarkdownDeep;
 
-namespace PlayCode2013Quiz.Helpers
+namespace QuizWebApp.Helpers
 {
     public static class Helper
     {

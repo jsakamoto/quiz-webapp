@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PlayCode2013Quiz.Models
+namespace QuizWebApp.Models
 {
-    public class Player
+    public class User
     {
-        public int PlayerID { get; set; }
+        public string UserId { get; set; }
+
+        public string IdProviderName { get; set; }
 
         public string Name { get; set; }
     }

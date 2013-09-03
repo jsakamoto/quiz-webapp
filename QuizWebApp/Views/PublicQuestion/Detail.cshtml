@@ -1,6 +1,7 @@
 ﻿@model QuizWebApp.Models.PublicQuestion
 @{
-    ViewBag.Title = "クイズ問題 - Q" + Model.QuestionNumber.ToString();
+    ViewBag.Title = "出題済みクイズ問題 - Q" + Model.QuestionNumber.ToString();
+    ViewBag.BodyCssClass = "public-questions-page";
 }
 <hgroup>
     <h2>@ViewBag.Title</h2>

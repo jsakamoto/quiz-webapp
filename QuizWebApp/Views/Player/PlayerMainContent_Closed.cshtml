@@ -1,28 +1,30 @@
 ﻿@model QuizWebApp.Models.PlayCode2013QuizDB
+@using QuizWebApp
 @using QuizWebApp.Models
 @using QuizWebApp.Helpers
-
 @{
     var q = Model.Questions.Find(Model.Contexts.First().CurrentQuestionID);
-    var playerID = Model.Players.First(p => p.Name == User.Identity.Name).PlayerID;
+    var playerID = this.User.Identity.UserId();
     var yourAns = Model.Answers.First(a => a.PlayerID == playerID && a.QuestionID == q.QuestionId);
     var choosed = yourAns.ChoosedOptionIndex >= 0 ? q.GetOptions()[yourAns.ChoosedOptionIndex - 1] : null;
 }
 
+<h3>問題</h3>
+
 <div class="well well-small">
-    <h3>Question is...</h3>
     <div>
         @Html.FormatToHtml(q.Body, q.BodyFormat)
     </div>
 </div>
 
+<h3>あなたが選択した回答:</h3>
+
 <div class="well well-small">
-    <h3>Your Choice is...</h3>
 
     <div class="optios">
         @if (choosed == null)
         {
-            <p>no choice.</p>
+            <p>※回答は選択されませんでした</p>
         }
         else
         {
@@ -35,4 +37,4 @@
     </div>
 </div>
 
-<p class="label label-wait"><i class="icon-info-sign icon-white"></i> Please wait...</p>
+<p class="label label-wait"><i class="icon-info-sign icon-white"></i> 司会者によって正解が表示されるまで、そのままお待ちください。</p>

@@ -2,4 +2,13 @@
     ViewBag.Title = "Home";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Quiz WebApp - @ViewBag.Title</h2>
+<p>
+    <a href="@Url.Action("Index", "Player")" class="btn btn-block btn-large btn-primary">クイズに参加</a>
+</p>
+<p>
+    <a href="@Url.Action("Index", "Question")" class="btn btn-block btn-large">クイズ問題を投稿</a>
+</p>
+<p>
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-block btn-large">クイズを進行</a>
+</p>

@@ -139,6 +139,10 @@ pre {
         padding-right: 8px;
     }
 
+.public-questions-page .nav .link-public-questions {
+    display: none;
+}
+
 /*  */
 .about-option-image,
 .disability-option-image-setup {

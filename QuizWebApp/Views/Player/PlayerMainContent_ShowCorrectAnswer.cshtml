@@ -1,29 +1,30 @@
 ﻿@model QuizWebApp.Models.PlayCode2013QuizDB
+@using QuizWebApp
 @using QuizWebApp.Models
 @using QuizWebApp.Helpers
-
 @{
     var q = Model.Questions.Find(Model.Contexts.First().CurrentQuestionID);
-    var playerID = Model.Players.First(p => p.Name == User.Identity.Name).PlayerID;
+    var playerID = this.User.Identity.UserId();
     var yourAns = Model.Answers.First(a => a.PlayerID == playerID && a.QuestionID == q.QuestionId);
     var choosed = yourAns.ChoosedOptionIndex >= 0 ? q.GetOptions()[yourAns.ChoosedOptionIndex - 1] : null;
     var correctOption = q.GetOptions()[q.IndexOfCorrectOption - 1];
 }
 
+<h3>問題</h3>
+
 <div class="well well-small">
-    <h3>Question is...</h3>
     <div>
         @Html.FormatToHtml(q.Body, q.BodyFormat)
     </div>
 </div>
 
-<div class="well well-small">
-    <h3>Your Choice is...</h3>
+<h3>あなたが選択した回答:</h3>
 
+<div class="well well-small">
     <div class="options">
         @if (choosed == null)
         {
-            <p>no choice.</p>
+            <p>※回答は選択されませんでした</p>
         }
         else
         {
@@ -37,13 +38,13 @@
 
     @if (yourAns.Status == AnswerStateType.Correct)
     {
-        <h3 class="correct">Correct!</h3>
+        <h3 class="correct">正解! :)</h3>
     }
     else
     {
-        <h3 class="incorrect">Incorrect...</h3>
+        <h3 class="incorrect">不正解 :(</h3>
 
-        <h4>Correct is:</h4>
+        <h4>正解は</h4>
         <div class="options">
             <div>@correctOption.Option</div>
             @if (string.IsNullOrEmpty(correctOption.OptionImage) == false)
@@ -54,11 +55,11 @@
     }
 </div>
 
+<h3>解説</h3>
+
 <div class="well well-small">
     @if (string.IsNullOrEmpty(q.Comment) == false)
     {
-        <h3>Details...</h3>
-
         <div>@Html.FormatToHtml(q.Comment, q.CommentFormat)</div>
     }
 </div>

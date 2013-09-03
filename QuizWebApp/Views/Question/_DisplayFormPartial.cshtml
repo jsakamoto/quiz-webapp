@@ -1,0 +1,51 @@
+﻿@model QuizWebApp.Models.Question
+@using QuizWebApp.Helpers
+<fieldset>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.FormatToHtml(Model.Body, Model.BodyFormat)
+        </dd>
+
+        <dt>回答選択肢</dt>
+        <dd>
+            <ol>
+                @foreach (var option in Model.GetOptions())
+                {
+                    <li>
+                        <div>@option.Option</div>
+                        <div><img src="@option.OptionImage" class="@(string.IsNullOrEmpty(option.OptionImage) ? "no-image" : "")"/></div>
+                    </li>
+                }
+            </ol>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IndexOfCorrectOption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndexOfCorrectOption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.FormatToHtml(Model.Comment, Model.CommentFormat) &nbsp;
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateAt)
+        </dt>
+
+        <dd>
+            @Model.CreateAt.ToLocalDateTimeString()
+        </dd>
+
+    </dl>
+</fieldset>

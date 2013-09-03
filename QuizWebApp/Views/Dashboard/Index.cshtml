@@ -2,7 +2,7 @@
 @model QuizWebApp.Models.PlayCode2013QuizDB
 
 @{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = "ダッシュボード";
     ViewBag.BodyCssClass = "dashboard-page";
 }
 @section scripts{
@@ -10,7 +10,7 @@
 }
 
 
-<h2>Dashboard</h2>
+<h2>@ViewBag.Title</h2>
 
 <div class="main-content">
     @Html.Partial("DashboardMainContent", Model)

@@ -5,15 +5,15 @@
 }
 
 @{
-    ViewBag.Title = "Quiz Master Console";
+    ViewBag.Title = "クイズを進行";
 
     var context = Model.Contexts.First();
     
     var states = new[] { 
-        new SelectListItem{ Value="PleaseWait", Text="please wait."},
-        new SelectListItem{ Value="ChooseTheAnswer", Text="choice the answer."},
-        new SelectListItem{ Value="Closed", Text="closed."},
-        new SelectListItem{ Value="ShowCorrectAnswer", Text="show correct answer."},
+        new SelectListItem{ Value="PleaseWait", Text="お待ちください"},
+        new SelectListItem{ Value="ChooseTheAnswer", Text="回答を選択してください"},
+        new SelectListItem{ Value="Closed", Text="回答を締め切りました"},
+        new SelectListItem{ Value="ShowCorrectAnswer", Text="正解はこちら"},
     };
     states
         .First(s => s.Value == context.CurrentState.ToString())
@@ -36,14 +36,15 @@
 
 <h2>@ViewBag.Title</h2>
 
-<h3>Current State</h3>
+<h3>現在の状態</h3>
 
 @Html.DropDownList("currentState", states)
 
-<h3>Current Question</h3>
+<h3>現在選択しているクイズ問題</h3>
 
 @Html.DropDownList("currentQuestion", questions)
 
+<hr />
 
 <div class="question-body">
     @Html.Action("QuestionBody")

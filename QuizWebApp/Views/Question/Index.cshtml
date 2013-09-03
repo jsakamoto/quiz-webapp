@@ -1,0 +1,25 @@
+﻿@model IEnumerable<QuizWebApp.Models.Question>
+@{
+    ViewBag.Title = "あなたが投稿したクイズ問題";
+}
+<hgroup>
+    <h2>@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+</hgroup>
+
+<div style="margin-bottom:1em;">
+    <a href="@Url.Action("Create")" class="btn btn-primary"><i class="icon-plus icon-white"></i> 新しい問題を追加</a>
+</div>
+
+<div>
+    @foreach (var question in Model)
+    {
+        <div class="well">
+            <div>@Html.Partial("_DisplayFormPartial", question)</div>
+            <div>
+                <a href="@Url.Action("Edit", new { id = question.QuestionId })" class="btn"><i class="icon-edit"></i> 編集</a>
+                <a href="@Url.Action("Delete", new { id = question.QuestionId })" class="btn"><i class="icon-trash"></i> 削除</a>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,25 @@
+﻿@model QuizWebApp.Models.Question
+@{
+    ViewBag.Title = "クイズ問題を削除";
+}
+<hgroup>
+    <h2>@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+    <h3>下記のクイズ問題を削除してもよろしいですか?</h3>
+</hgroup>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.Partial("_DisplayFormPartial", Model)
+        <div>
+            <input type="submit" value="削除" class="btn btn-danger" />
+            <a href="@Url.Action("Index")" class="btn">キャンセル</a>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

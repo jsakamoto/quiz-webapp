@@ -11,15 +11,15 @@ namespace QuizWebApp.Controllers
 
         // GET api/Questions
         [Queryable]
-        public IQueryable<Question> GetQuestions()
+        public IQueryable<PublicQuestion> GetQuestions()
         {
-            return db.Questions;
+            return db.GetPublicQuestions().AsQueryable();
         }
 
         [HttpGet]
         public int Count()
         {
-            return db.Questions.Count();
+            return db.GetPublicQuestions().Count();
         }
 
         protected override void Dispose(bool disposing)

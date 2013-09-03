@@ -1,0 +1,86 @@
+﻿@model QuizWebApp.Models.Question
+@using QuizWebApp.Models
+<fieldset class="form-horizontal">
+    <div class="control-group">
+        @Html.LabelFor(model => model.Body, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextAreaFor(model => model.Body, rows: 8, columns: 20, htmlAttributes: new { @class = "input-blockx span8" })
+            @Html.ValidationMessageFor(model => model.Body, null, new { @class = "help-inline" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        @Html.LabelFor(model => model.BodyFormat, new { @class = "control-label" })
+        <div class="controls">
+            @Html.DropDownListFor(model => model.BodyFormat, new[] { TextFormatType.PlainText, TextFormatType.MarkDown }.Select(n => new SelectListItem { Text = n.ToString() }))
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <span class="label label-info about-option-image">
+                ※回答選択肢 ... 画像のみで示される場合でも、「図1」などと必ずテキストも入力してください。
+            </span>
+            <span class="label label-warning disability-option-image-setup">
+                ※申し訳ありません、お使いのブラウザでは画像の設定ができません。<br />
+                回答選択肢に画像が必要な場合は、最新バージョンや他のブラウザをお使いください。
+            </span>
+        </div>
+    </div>
+
+    @foreach (var option in Model.GetOptions(trim: false))
+    {
+        var modelName = "Option" + option.OptionNumber.ToString();
+        var imageModelName = "OptionImage" + option.OptionNumber.ToString();
+        <div class="control-group">
+            @Html.Label(modelName, new { @class = "control-label" })
+            <div class="controls">
+                <div>
+                    @Html.TextBox(modelName, option.Option)
+                    @Html.ValidationMessage(modelName, new { @class = "help-inline" })
+                    @Html.Hidden(imageModelName, option.OptionImage, new { @class = "option-image-hidden" })
+                </div>
+                <div class="@((string.IsNullOrEmpty(option.OptionImage) ? "no-image" : "") + " image-holder")">
+                    <img id="@(modelName + "Image")" src="@option.OptionImage" class="option-image" />
+                    <div class="image-actions">
+                        <div class="btn-add-image">
+                            <a href="#" class="btn add-image">画像を設定</a>
+                            <input type="file" id="@("_" + modelName + "ImageFile")" class="option-image-file" tabindex="-1"/>
+                        </div>
+                        <a href="#" class="btn remove-image">画像を削除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="control-group">
+        @Html.LabelFor(model => model.IndexOfCorrectOption, new { @class = "control-label" })
+        <div class="controls">
+            @Html.DropDownListFor(model => model.IndexOfCorrectOption, Enumerable.Range(1, 6).Select(n => new SelectListItem { Text = n.ToString() }))
+            @Html.ValidationMessageFor(model => model.IndexOfCorrectOption, null, new { @class = "help-inline" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        @Html.LabelFor(model => model.Comment, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextAreaFor(model => model.Comment, rows: 8, columns: 20, htmlAttributes: new { @class = "span8" })
+            @Html.ValidationMessageFor(model => model.Comment, null, new { @class = "help-inline" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(model => model.CommentFormat, new { @class = "control-label" })
+        <div class="controls">
+            @Html.DropDownListFor(model => model.CommentFormat, new[] { TextFormatType.PlainText, TextFormatType.MarkDown }.Select(n => new SelectListItem { Text = n.ToString() }))
+        </div>
+    </div>
+
+    <div class="form-actions no-color">
+        <input type="submit" value="OK" class="btn btn-primary" />
+        <a href="@Url.Action("Index")" class="btn">キャンセル</a>
+    </div>
+</fieldset>
+
+
+

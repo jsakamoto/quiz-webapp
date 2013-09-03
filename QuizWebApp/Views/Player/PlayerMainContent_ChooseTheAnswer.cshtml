@@ -5,15 +5,17 @@
 @{
     var q = Model.Questions.Find(Model.Contexts.First().CurrentQuestionID);
 }
+<h3>問題</h3>
+
 <div class="well well-small">
-    <h3>Question is...</h3>
     <div>
         @Html.FormatToHtml(q.Body, q.BodyFormat)
     </div>
 </div>
 
+<h3>以下から回答を選択してください</h3>
+
 <div class="well well-small">
-    <h3>Chose Answer.</h3>
 
     @foreach (var opt in q.GetOptions())
     {

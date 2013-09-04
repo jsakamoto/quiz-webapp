@@ -3,8 +3,8 @@
 
 <table class="dashboard">
     <tr>
-        <th>name</th>
-        <th class="score">Score</th>
+        <th>回答者名</th>
+        <th class="score">正答数</th>
         @foreach(var n in Enumerable.Range(1, Model.Questions.Count()))
         {
             <th>@("Q" + n.ToString())</th>

@@ -7,11 +7,11 @@ namespace QuizWebApp.Controllers
 {
     public class PublicQuestionController : Controller
     {
-        public PlayCode2013QuizDB DB { get; set; }
+        public QuizWebAppDb DB { get; set; }
 
         public PublicQuestionController()
         {
-            this.DB = new PlayCode2013QuizDB();
+            this.DB = new QuizWebAppDb();
         }
 
         public ActionResult Index()

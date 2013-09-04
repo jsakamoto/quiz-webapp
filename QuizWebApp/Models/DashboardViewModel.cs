@@ -13,7 +13,7 @@ namespace QuizWebApp.Models
 
         public IEnumerable<Question> Questions { get; set; }
 
-        public DashboardViewModel(PlayCode2013QuizDB db)
+        public DashboardViewModel(QuizWebAppDb db)
         {
             this.Answers = db.Answers.ToArray();
             this.Questions = db.Questions.ToArray();

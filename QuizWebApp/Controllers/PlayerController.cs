@@ -8,11 +8,11 @@ namespace QuizWebApp.Controllers
     [Authorize]
     public class PlayerController : Controller
     {
-        public PlayCode2013QuizDB DB { get; set; }
+        public QuizWebAppDb DB { get; set; }
 
         public PlayerController()
         {
-            this.DB = new PlayCode2013QuizDB();
+            this.DB = new QuizWebAppDb();
         }
 
         [HttpGet]

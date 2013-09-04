@@ -209,7 +209,7 @@
     <Compile Include="Models\DashboardViewModel.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\OptionViewModel.cs" />
-    <Compile Include="Models\PlayCode2013QuizDB.cs" />
+    <Compile Include="Models\QuizWebAppDb.cs" />
     <Compile Include="Models\PublicQuestion.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\TextFormatType.cs" />

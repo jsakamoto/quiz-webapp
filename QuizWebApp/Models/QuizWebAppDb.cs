@@ -6,7 +6,7 @@ using System.Web;
 
 namespace QuizWebApp.Models
 {
-    public class PlayCode2013QuizDB : DbContext
+    public class QuizWebAppDb : DbContext
     {
         public DbSet<User> Users { get; set; }
 

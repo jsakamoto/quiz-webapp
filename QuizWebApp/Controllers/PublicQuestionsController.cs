@@ -7,7 +7,7 @@ namespace QuizWebApp.Controllers
 {
     public class PublicQuestionsController : ApiController
     {
-        private PlayCode2013QuizDB db = new PlayCode2013QuizDB();
+        private QuizWebAppDb db = new QuizWebAppDb();
 
         // GET api/Questions
         [Queryable]

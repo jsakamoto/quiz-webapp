@@ -7,11 +7,11 @@ namespace QuizWebApp.Controllers
 {
     public class DashboardController : Controller
     {
-        public PlayCode2013QuizDB DB { get; set; }
+        public QuizWebAppDb DB { get; set; }
 
         public DashboardController()
         {
-            this.DB = new PlayCode2013QuizDB();
+            this.DB = new QuizWebAppDb();
         }
 
         [HttpGet]

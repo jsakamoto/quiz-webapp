@@ -24,9 +24,9 @@ namespace QuizWebApp
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            Database.SetInitializer(new CreateDatabaseIfNotExists<PlayCode2013QuizDB>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<QuizWebAppDb>());
 
-            using (var db = new PlayCode2013QuizDB())
+            using (var db = new QuizWebAppDb())
             {
                 if (db.Contexts.Any() == false)
                 {

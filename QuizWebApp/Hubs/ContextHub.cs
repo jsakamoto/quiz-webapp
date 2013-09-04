@@ -13,7 +13,7 @@ namespace QuizWebApp.Hubs
     {
         public void UpdateCurrentState(ContextStateType state)
         {
-            using (var db = new PlayCode2013QuizDB())
+            using (var db = new QuizWebAppDb())
             {
                 var context = db.Contexts.First();
                 context.CurrentState = state;
@@ -41,7 +41,7 @@ namespace QuizWebApp.Hubs
 
         public void PlayerSelectedOptionIndex(int answerIndex)
         {
-            using (var db = new PlayCode2013QuizDB())
+            using (var db = new QuizWebAppDb())
             {
                 var playerId = Context.User.Identity.UserId();
                 var questionId = db.Contexts.First().CurrentQuestionID;

@@ -9,11 +9,11 @@ namespace QuizWebApp.Controllers
     [AuthorizeQuizMaster]
     public class AdminController : Controller
     {
-        public PlayCode2013QuizDB DB { get; set; }
+        public QuizWebAppDb DB { get; set; }
 
         public AdminController()
         {
-            this.DB = new PlayCode2013QuizDB();
+            this.DB = new QuizWebAppDb();
         }
 
         [HttpGet]

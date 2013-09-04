@@ -19,7 +19,7 @@ namespace QuizWebApp.Code
             var userIdentity = httpContext.User.Identity;
             if (userIdentity.IsAuthenticated == false) return false;
 
-            using (var db = new PlayCode2013QuizDB())
+            using (var db = new QuizWebAppDb())
             {
                 var userInfo = db.Users.Find(userIdentity.UserId());
                 if (userInfo == null) return false;

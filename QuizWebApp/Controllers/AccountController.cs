@@ -23,7 +23,7 @@ namespace QuizWebApp.Controllers
         {
             if (this.User.Identity.IsAuthenticated)
             {
-                using (var db = new PlayCode2013QuizDB())
+                using (var db = new QuizWebAppDb())
                 {
                     var userInfo = db.Users.Find(this.User.Identity.UserId());
                     if (userInfo != null)
@@ -69,7 +69,7 @@ namespace QuizWebApp.Controllers
                 Name = result.Provider != "github" ? result.UserName : result.ExtraData["login"]
             };
 
-            using (var db = new QuizWebApp.Models.PlayCode2013QuizDB())
+            using (var db = new QuizWebApp.Models.QuizWebAppDb())
             {
                 if (db.Users.Find(user.UserId) == null)
                 {

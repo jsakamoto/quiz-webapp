@@ -1,4 +1,4 @@
-﻿@model QuizWebApp.Models.PlayCode2013QuizDB
+﻿@model QuizWebApp.Models.DashboardViewModel
 @using QuizWebApp.Models
 
 <table class="dashboard">
@@ -11,7 +11,7 @@
         }
     </tr>
 
-    @foreach (var player in Model.Users.ToArray())
+    @foreach (var player in Model.Players)
     {
         <tr>
             <td>@player.Name</td>

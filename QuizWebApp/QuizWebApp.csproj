@@ -206,6 +206,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\DashboardViewModel.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\OptionViewModel.cs" />
     <Compile Include="Models\PlayCode2013QuizDB.cs" />
@@ -292,7 +293,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="about.md" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="img\glyphicons-halflings-white.png" />
@@ -322,6 +322,7 @@
     <Content Include="Views\Admin\Admin.js" />
     <Content Include="Views\Dashboard\Dashboard.js" />
     <Content Include="Views\Player\Player.js" />
+    <Content Include="Views\Shared\_Layout.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

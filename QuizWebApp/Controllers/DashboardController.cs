@@ -17,13 +17,21 @@ namespace QuizWebApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View(this.DB);
+            var model = new DashboardViewModel(this.DB);
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult LatestDashboard()
         {
-            return PartialView("DashboardMainContent", this.DB);
-        } 
+            var model = new DashboardViewModel(this.DB);
+            return PartialView("DashboardMainContent", model);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            this.DB.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

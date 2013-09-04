@@ -26,7 +26,14 @@
                     </ul>
                     <ul class="nav pull-right">
                         <li>
-                            <div class="user-name">@User.Identity.Name</div>
+                            <div class="user-box">
+                                @if (this.User.Identity.IsAuthenticated)
+                                { 
+                                    <span class="user-name">@User.Identity.Name</span>
+                                    <text>|</text>
+                                    <a href="@Url.Action("SignOut", "Account")" id="signout">サインアウト</a>
+                                }
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -39,6 +46,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/signalr/hubs"></script>
+    <script src="~/Views/Shared/_Layout.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

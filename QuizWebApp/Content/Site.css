@@ -4,9 +4,16 @@
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 }
 
-.user-name {
-    color: #999999;
+.user-box{
     padding: 10px 15px 10px 15px;
+    color: #999999;
+}
+.user-name, a#signout {
+    color: #999999;
+    text-decoration:none;
+}
+a#signout:hover{
+    color:#fff;
 }
 
 /* styles for validation helpers */

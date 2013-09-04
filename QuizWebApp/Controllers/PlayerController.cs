@@ -18,6 +18,10 @@ namespace QuizWebApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            var userInfo = this.DB.Users.Find(this.User.Identity.UserId());
+            userInfo.AttendAsPlayerAt = DateTime.UtcNow;
+            this.DB.SaveChanges();
+
             return View(this.DB);
         }
 

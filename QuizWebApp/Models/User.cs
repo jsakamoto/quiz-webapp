@@ -12,5 +12,7 @@ namespace QuizWebApp.Models
         public string IdProviderName { get; set; }
 
         public string Name { get; set; }
+
+        public DateTime? AttendAsPlayerAt { get; set; }
     }
 }

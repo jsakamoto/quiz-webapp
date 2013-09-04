@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.Web.WebPages.OAuth;
 using QuizWebApp.Code;
+using QuizWebApp.Models;
 
 namespace QuizWebApp.Controllers
 {
@@ -20,8 +21,20 @@ namespace QuizWebApp.Controllers
         [HttpPost]
         public ActionResult SignOut()
         {
-            FormsAuthentication.SignOut();
-            return Redirect("~/");
+            if (this.User.Identity.IsAuthenticated)
+            {
+                using (var db = new PlayCode2013QuizDB())
+                {
+                    var userInfo = db.Users.Find(this.User.Identity.UserId());
+                    if (userInfo != null)
+                    {
+                        userInfo.AttendAsPlayerAt = null;
+                        db.SaveChanges();
+                    }
+                }
+                FormsAuthentication.SignOut();
+            }
+            return Json(new { url = this.Url.Content("~/") });
         }
 
         [HttpPost]

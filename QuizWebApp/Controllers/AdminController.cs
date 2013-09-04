@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using QuizWebApp.Code;
 using QuizWebApp.Models;
 
 namespace QuizWebApp.Controllers
 {
+    [AuthorizeQuizMaster]
     public class AdminController : Controller
     {
         public PlayCode2013QuizDB DB { get; set; }

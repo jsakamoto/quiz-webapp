@@ -15,11 +15,7 @@ namespace QuizWebApp
             // To let users of this site log in using their accounts from other sites such as Microsoft, Facebook, and Twitter,
             // you must update this site. For more information visit http://go.microsoft.com/fwlink/?LinkID=252166
 
-            var appSettings = ConfigurationManager.AppSettings;
-            Func<string, Dictionary<string, string>> getOAuthSetting = key =>
-                JsonConvert.DeserializeObject<Dictionary<string, string>>(appSettings[key]);
-
-            var oauthMicrosoftSetting = getOAuthSetting("OAuth.Microsoft");
+            var oauthMicrosoftSetting = JsonAppSettings.AsDictionary("OAuth.Microsoft");
             if (oauthMicrosoftSetting != null)
             {
                 OAuthWebSecurity.RegisterMicrosoftClient(
@@ -27,7 +23,7 @@ namespace QuizWebApp
                     oauthMicrosoftSetting["clientSecret"]);
             }
 
-            var oauthTwitterSetting = getOAuthSetting("OAuth.Twitter");
+            var oauthTwitterSetting = JsonAppSettings.AsDictionary("OAuth.Twitter");
             if (oauthTwitterSetting != null)
             {
                 OAuthWebSecurity.RegisterTwitterClient(
@@ -35,7 +31,7 @@ namespace QuizWebApp
                     oauthTwitterSetting["consumerSecret"]);
             }
 
-            var oauthFacebookSetting = getOAuthSetting("OAuth.facebook");
+            var oauthFacebookSetting = JsonAppSettings.AsDictionary("OAuth.facebook");
             if (oauthFacebookSetting != null)
             {
                 OAuthWebSecurity.RegisterFacebookClient(
@@ -46,7 +42,7 @@ namespace QuizWebApp
             OAuthWebSecurity.RegisterGoogleClient();
 
             // TODO: GitHub Account Support.
-            //var oauthGitHubSetting = getOAuthSetting("OAuth.GitHub");
+            //var oauthGitHubSetting = JsonAppSettings.AsDictionary("OAuth.GitHub");
             //OAuthWebSecurity.RegisterClient(new GitHubOAuth2Client(
             //    oauthGitHubSetting["clientId"],
             //    oauthGitHubSetting["clientSecret"]), "GitHub", null);

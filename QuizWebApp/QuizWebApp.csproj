@@ -188,6 +188,8 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Code\AuthorizeQuizMaster.cs" />
+    <Compile Include="Code\JsonAppSettings.cs" />
     <Compile Include="Code\IIdentityExtension.cs" />
     <Compile Include="Code\LamdaResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />

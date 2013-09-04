@@ -3,12 +3,25 @@
 }
 
 <h2>Quiz WebApp - @ViewBag.Title</h2>
-<p>
-    <a href="@Url.Action("Index", "Player")" class="btn btn-block btn-large btn-primary">クイズに参加</a>
-</p>
-<p>
-    <a href="@Url.Action("Index", "Question")" class="btn btn-block btn-large">クイズ問題を投稿</a>
-</p>
-<p>
-    <a href="@Url.Action("Index", "Admin")" class="btn btn-block btn-large">クイズを進行</a>
-</p>
+
+@if (this.User.Identity.IsAuthenticated)
+{ 
+    <p>
+        <a href="@Url.Action("Index", "Player")" class="btn btn-block btn-large btn-primary">クイズに参加</a>
+    </p>
+    <p>
+        <a href="@Url.Action("Index", "Question")" class="btn btn-block btn-large">クイズ問題を投稿</a>
+    </p>
+    if (ViewBag.IsQuizMaster == true)
+    { 
+        <p>
+            <a href="@Url.Action("Index", "Admin")" class="btn btn-block btn-large">クイズを進行</a>
+        </p>
+    }
+}
+else
+{
+    <p>
+        <a href="@Url.Action("SignIn", "Account")" class="btn btn-block btn-large btn-primary">クイズに参加または問題を投稿するにはサインイン</a>
+    </p>
+}

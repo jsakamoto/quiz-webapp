@@ -322,6 +322,7 @@
     <Content Include="Views\Admin\Admin.js" />
     <Content Include="Views\Dashboard\Dashboard.js" />
     <Content Include="Views\Player\Player.js" />
+    <Content Include="Views\Question\Edit.js" />
     <Content Include="Views\Shared\_Layout.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

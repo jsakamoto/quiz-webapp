@@ -337,7 +337,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Player\PlayerMainContent_PleaseWait.cshtml" />
     <Content Include="Views\Player\PlayerMainContent_ChooseTheAnswer.cshtml" />
     <Content Include="Views\Player\PlayerMainContent_Closed.cshtml" />

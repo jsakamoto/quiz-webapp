@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Security;
+using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using QuizWebApp.Code;
 using QuizWebApp.Models;
@@ -13,9 +14,30 @@ namespace QuizWebApp.Controllers
 {
     public class AccountController : Controller
     {
+        [HttpGet]
         public ActionResult SignIn()
         {
-            return View(OAuthWebSecurity.RegisteredClientData);
+            return View(new SignInViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult SignIn(SignInViewModel model)
+        {
+            if (model.ExternalAuth) return Redirect("~");
+
+            if (this.ModelState.IsValid == false)
+            {
+                return View(model);
+            }
+
+            var result = new AuthenticationResult(isSuccessful: true,
+                provider: "local",
+                providerUserId: model.HandleName,
+                userName: model.HandleName,
+                extraData: null);
+            RegistUserAndIssueAuthCookie(result);
+
+            return Redirect("~/");
         }
 
         [HttpPost]
@@ -59,6 +81,13 @@ namespace QuizWebApp.Controllers
                 return Redirect("~/");
             }
 
+            RegistUserAndIssueAuthCookie(result);
+
+            return Redirect("~/");
+        }
+
+        private void RegistUserAndIssueAuthCookie(AuthenticationResult result)
+        {
             var salt = ConfigurationManager.AppSettings["SaltOfUserID"];
             var user = new QuizWebApp.Models.User
             {
@@ -85,8 +114,6 @@ namespace QuizWebApp.Controllers
                 null, ticket, new object[] { user.UserId });
             cookie.Value = FormsAuthentication.Encrypt(ticket);
             Response.Cookies.Add(cookie);
-
-            return Redirect("~/");
         }
 
         private string GetHashedText(string text)

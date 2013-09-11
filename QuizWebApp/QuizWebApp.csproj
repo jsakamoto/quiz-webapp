@@ -212,6 +212,7 @@
     <Compile Include="Models\QuizWebAppDb.cs" />
     <Compile Include="Models\PublicQuestion.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\SignInViewModel.cs" />
     <Compile Include="Models\TextFormatType.cs" />
     <Compile Include="Models\ContextStateType.cs" />
     <Compile Include="Models\AnswerStateType.cs" />

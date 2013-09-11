@@ -1,4 +1,4 @@
-﻿@model ICollection<Microsoft.Web.WebPages.OAuth.AuthenticationClientData>
+﻿@model QuizWebApp.Models.SignInViewModel
 
 @{
     ViewBag.Title = "サインイン";
@@ -6,37 +6,62 @@
 
 <h1>@ViewBag.Title</h1>
 
-@using (Html.BeginForm("ExternalLogin", "Account"))
+@if (Model.ExternalAuth)
 {
-    @Html.AntiForgeryToken()
-    foreach (AuthenticationClientData p in Model)
+    using (Html.BeginForm("ExternalLogin", "Account"))
     {
-
-        string imageName;
-        switch (p.DisplayName)
+    @Html.AntiForgeryToken()
+        foreach (var p in Model.RegisteredClientData)
         {
-            case "Facebook":
-                imageName = @"/Content/images/facebook.png";
-                break;
-            case "Twitter":
-                imageName = @"/Content/images/twitter.png";
-                break;
-            case "Microsoft":
-                imageName = @"/Content/images/microsoft.png";
-                break;
-            case "Google":
-                imageName = @"/Content/images/google_plus.png";
-                break;
-            case "GitHub":
-                imageName = @"/Content/images/github.png";
-                break;
-            default:
-                imageName = "";
-                break;
+            var imageName = default(string);
+            switch (p.DisplayName)
+            {
+                case "Facebook":
+                    imageName = @"/Content/images/facebook.png";
+                    break;
+                case "Twitter":
+                    imageName = @"/Content/images/twitter.png";
+                    break;
+                case "Microsoft":
+                    imageName = @"/Content/images/microsoft.png";
+                    break;
+                case "Google":
+                    imageName = @"/Content/images/google_plus.png";
+                    break;
+                case "GitHub":
+                    imageName = @"/Content/images/github.png";
+                    break;
+                default:
+                    imageName = "";
+                    break;
+            }
+    <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">
+        <img src="@imageName" />
+        @p.DisplayName
+    </button>
         }
-        <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">
-            <img src="@imageName" />
-            @p.DisplayName
-        </button>
     }
+}
+else
+{
+    using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+    <fieldset class="form-horizontal">
+        <div class="control-group">
+            @Html.LabelFor(model => model.HandleName, new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.HandleName, new { @class = "input-blockx" })
+                @Html.ValidationMessageFor(model => model.HandleName, null, new { @class = "help-inline" })
+            </div>
+        </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="OK" class="btn btn-primary" />
+        </div>
+    </fieldset>
+    }
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
